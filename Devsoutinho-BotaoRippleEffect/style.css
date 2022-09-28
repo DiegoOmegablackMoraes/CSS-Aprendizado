@@ -1,0 +1,64 @@
+.btnRipple {
+  width: 300px;
+  height: 200px;
+  outline: 0;
+  border: 1px solide #e15f03;
+  background: #ff6400;
+  color: white;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  transition: background 0.3s;
+  /* Importantes */
+  overflow: hidden;
+  position: relative;
+}
+
+.btnRipple:hover {
+  background-color: #fb8c00;
+  cursor: pointer;
+}
+
+.onda {
+  /* custom property que será manipulada via js */
+  --topo: 0;
+  --esquerda: 0;
+  --scale: 0;
+  --opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+
+  /* Reset de posiçoes */
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* Importantes */
+  will-change: transform;
+  transform: translateX(var(--esquerda)) translateY(var(--topo));
+}
+
+.onda:after {
+  content: "";
+  display: block;
+  width: 100%;
+  border-radius: 50%;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  /* Importantes */
+  will-change: transform;
+  transform: scale(var(--scale));
+  opacity: var(--opacity);
+  transition: transform 0.5s, opacity 0.3s;
+}
+
+body {
+  background: #eee;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
